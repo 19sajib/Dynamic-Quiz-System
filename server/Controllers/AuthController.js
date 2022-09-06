@@ -4,9 +4,9 @@ import bcrypt from 'bcryptjs'
 import UserModel from '../Models/User.js'
 
 export const registerUser = async (req, res) => {
-    const { username, email, password, firstName, lastName } = req.body;
+    const { username, email, password, fullName } = req.body;
 
-    if(!firstName || !lastName || !username || !email || !password ) return res.status(401).json('Invalid Credentials');
+    if(!fullName || !username || !email || !password ) return res.status(401).json('Invalid Credentials');
 
     const salt = await bcrypt.genSalt(10)
     const hashedPassword = await bcrypt.hash(password, salt)
