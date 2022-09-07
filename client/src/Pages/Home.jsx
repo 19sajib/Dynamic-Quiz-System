@@ -1,9 +1,12 @@
 
+import Quizs from '../Components/Quizs'
 
 const Home = () => {
     
     return (
-        <h2>Home</h2>
+        <div>
+            <Quizs />
+        </div>
     )
 }
 
