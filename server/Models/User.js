@@ -24,6 +24,14 @@ const UserSchema = mongoose.Schema({
     },
     enrolledQuiz: [],
     takenQuiz: [],
+    totalSpend: {
+        type: Number,
+        default: 0
+    },
+    totalRefund: {
+        type: Number,
+        default: 0
+    }
 
 }, 
 

@@ -7,6 +7,7 @@ import bodyParser from 'body-parser'
 
 import AuthRoute from './Routes/AuthRoute.js'
 import UserRoute from './Routes/UserRoute.js'
+import QuizRoute from './Routes/QuizRoute.js'
 
 
 const app = express()
@@ -37,3 +38,4 @@ mongoose.connect(process.env.MONGO_URI,{
 // Routes
 app.use('/auth', AuthRoute)
 app.use('/user', UserRoute)
+app.use('/quiz', QuizRoute)
