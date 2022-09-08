@@ -8,16 +8,16 @@ const Quizs = () => {
     const dispatch = useDispatch();
     const  user  = useSelector((state)=> state.authReducer.authData)
     let { quizs, loading } = useSelector((state) => state.quizReducer)
-    console.log(user);
+    console.log(quizs);
 
     React.useEffect(() => {
         dispatch(getAllQuiz(user._id))
     },[])
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-wrap m-3">
         {loading ? "Retreiving Quizs..."
          : quizs.quiz.map((quiz, id) => {
-          return <Quiz data={quiz} id={id} />
+          return <Quiz data={quiz} id={id} key={id} />
         })}
     </div>
   )
