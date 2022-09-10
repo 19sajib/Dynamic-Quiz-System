@@ -2,6 +2,7 @@ import './App.css';
 import Auth from './Pages/Auth'
 import Home from './Pages/Home'
 import Quiz from './Pages/Quiz'
+import Navbar from './Components/Navbar';
 
 import { Routes, Route, Navigate } from 'react-router-dom'
 import { useSelector }from 'react-redux'
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <div>
+      <Navbar />
       <Routes>
       <Route 
                path="/" 
