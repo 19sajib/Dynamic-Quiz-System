@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
         const user = await newUser.save()
 
         const token = jwt.sign({
-            username: user.username, id: user._id,
+            username: user.username, id: user._id, isAdmin: user.isAdmin,
         },process.env.JWT_SECRET_KEY,{expiresIn: '2h'})
 
         res.status(201).json({...user._doc, password: null, token})
@@ -42,7 +42,7 @@ export const loginUser = async (req, res) => {
         if(!validity) return res.status(401).json('Invalid Credentials')
 
         const token = jwt.sign({
-            username: user.username, id: user._id,
+            username: user.username, id: user._id, isAdmin: user.isAdmin,
         },process.env.JWT_SECRET_KEY,{expiresIn: '2h'})
 
         res.status(200).json({...user._doc, password: null, token})
