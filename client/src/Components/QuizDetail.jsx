@@ -1,12 +1,13 @@
 import React, { useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useParams } from 'react-router-dom'
+import { useParams, useNavigate } from 'react-router-dom'
 
 import { submitQuiz } from '../Actions/QuizAction'
 
 const QuizDetail = ({data}) => {
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
   const {id} = useParams()
 
   const user = useSelector((state)=> state.authReducer.authData)
@@ -33,6 +34,7 @@ const QuizDetail = ({data}) => {
   const handleSubmit= (e) => {
     e.preventDefault()
     dispatch(submitQuiz(id, quizData))
+    navigate(`/quiz/${id}/summary`)
   }
 
   return (

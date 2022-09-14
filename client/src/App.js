@@ -2,6 +2,7 @@ import './App.css';
 import Auth from './Pages/Auth'
 import Home from './Pages/Home'
 import Quiz from './Pages/Quiz'
+import QuizSummary from './Pages/QuizSummary';
 import Navbar from './Components/Navbar';
 
 import { Routes, Route, Navigate } from 'react-router-dom'
@@ -27,13 +28,18 @@ function App() {
           />      
 
           <Route 
-                path="auth"
+                path="/auth"
                 element={ user ? <Navigate to = "../home"/> : <Auth /> }
           />  
 
          <Route
                 path="/quiz/:id"    
                 element={ user ? <Quiz /> : <Navigate to = "../auth" /> } 
+          /> 
+
+         <Route
+                path="/quiz/:id/summary"    
+                element={ user ? <QuizSummary /> : <Navigate to = "../auth" /> } 
           /> 
 
       </Routes>
