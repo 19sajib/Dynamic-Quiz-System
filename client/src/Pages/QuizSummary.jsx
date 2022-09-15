@@ -11,7 +11,7 @@ const QuizSummary = () => {
 
     const quiz = quizs.quiz.filter((data)=> data._id===id)[0]
     const tData = quiz.playedBy.sort((a,b)=>b.topScore-a.topScore)
-    
+
   return (
     <div>
         <div className="w-full h-screen overflow-x-hidden border-t flex flex-col">
@@ -21,7 +21,7 @@ const QuizSummary = () => {
                 <div className="w-full flex">
                 <h2 className="w-1/3 text-2xl font-bold text-gray-400 pb-6">Quiz Question : {quiz.questions.length}</h2>
                 <h2 className="w-1/3 text-2xl font-bold text-gray-400 pb-6">Max Play : {quiz.maxPlay}</h2>
-                <h2 className="w-1/3 text-2xl font-bold text-gray-400 pb-6">Time : {moment(quiz.quizTime, "m").format("m:ss")}</h2>
+                <h2 className="w-1/3 text-2xl font-bold text-gray-400 pb-6">Time : {moment(`${quiz.quizTime.hrs}:${quiz.quizTime.mins}:${quiz.quizTime.secs}`, "hh-mm-ss").format("hh:mm:ss")}</h2>
                 </div>
 
                 <div className="w-full mt-6">

@@ -36,7 +36,10 @@ const QuizSchema = mongoose.Schema({
         type: Number
     },
     quizTime: {
-        type: String
+        hrs: Number, 
+        mins: Number, 
+        secs: Number,
+        fullTime: Boolean,
     },
     questionTime: {
         type: String

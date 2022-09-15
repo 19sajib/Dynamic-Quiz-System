@@ -21,7 +21,7 @@ export const submitQuiz = async (req, res) => {
         const quizId = req.params.id;
     try {
         const quiz = await QuizModel.findById(quizId);
-        if(!quiz) res.status(404).json({message: 'No Such Quiz...'})
+        if(!quiz) return res.status(404).json({message: 'No Such Quiz...'})
         let realAnswer = quiz.answers;
         let score = 0;
         for(let i = 0; i < realAnswer.length; i++){
@@ -31,7 +31,7 @@ export const submitQuiz = async (req, res) => {
 
         const quizTaker = quiz.playedBy.filter(player => player.playerId === playerId);
         if(quizTaker[0]) {
-            quizTaker[0].topScore = score;
+            if (quizTaker[0].topScore < score) quizTaker[0].topScore = score;
             quizTaker[0].timesPlayed = quizTaker[0].timesPlayed + 1;
         } else {
             let newQuizTaker = {

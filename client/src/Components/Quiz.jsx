@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
+import moment from 'moment'
 import { Link } from 'react-router-dom'
 import { FaList } from 'react-icons/fa'
 import { IoMdTimer } from 'react-icons/io'
 import { MdQuiz } from 'react-icons/md'
 
 const Quiz = ({data}) => {
+
+  
   return (
     <>
     <div className="w-full sm:w-1/2 md:w-1/3 flex flex-col p-3">
@@ -41,9 +44,10 @@ const Quiz = ({data}) => {
               </div>
               <div className="font-medium text-gray-700">
                   <IoMdTimer className="h-6 w-6 inline mr-2 text-red-500" />
+                  {data.quizTime?.hrs && data.quizTime?.mins && data.quizTime?.secs &&
                   <span>
-                    Time: {data.quizTime}
-                  </span>
+                    Time: {`${data.quizTime.hrs}:${data.quizTime.mins}:${data.quizTime.secs}`}
+                  </span>}
               </div>
       </div>
       <div className="text-center pb-6">

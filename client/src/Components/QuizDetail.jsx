@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams, useNavigate } from 'react-router-dom'
 
 import { submitQuiz } from '../Actions/QuizAction'
+import Timer from './Timer'
 
 const QuizDetail = ({data}) => {
 
@@ -13,6 +14,7 @@ const QuizDetail = ({data}) => {
   const user = useSelector((state)=> state.authReducer.authData)
   const {loading, error} = useSelector((state)=> state.authReducer)
 
+  const [timeEnd, setTimeEnd] = useState(false)
   const [currrentQuestion, setCurrentQuestion] = useState(1)
   const [quizData, setQuizData] = useState({
     userAnswer: [],
@@ -36,6 +38,13 @@ const QuizDetail = ({data}) => {
     dispatch(submitQuiz(id, quizData))
     navigate(`/quiz/${id}/summary`)
   }
+  useEffect(()=>{
+    if(timeEnd) {
+      dispatch(submitQuiz(id, quizData))
+      navigate(`/quiz/${id}/summary`)
+      setTimeEnd(false)
+    }
+  },[timeEnd])
 
   return (
     <div>
@@ -43,7 +52,8 @@ const QuizDetail = ({data}) => {
         <div className="w-auto flex flex-col p-10 m-auto">
           <div className='bg-white rounded-lg shadow-lg overflow-hidden flex-1 flex flex-col'>
                         <div className="mt-4 text-center text-2xl text-gray-700">Question {currrentQuestion} of {data.questions.length}</div>
-                        <div className="mt-10 text-center text-2xl font-bold text-gray-700">
+                            <Timer data={data.quizTime} setTimeEnd={setTimeEnd} />
+                        <div className="mt-5 text-center text-2xl font-bold text-gray-700">
                             <div>{data.questions[currrentQuestion - 1].title }</div>
                         </div>
                         <hr className="mx-5 my-5 border-t border-grey-light pt-2" />
