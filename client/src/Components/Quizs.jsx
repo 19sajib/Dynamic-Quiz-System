@@ -12,7 +12,9 @@ const Quizs = () => {
 
     React.useEffect(() => {
         dispatch(getAllQuiz(user._id))
-    },[])
+    },[user._id])
+
+  if(!quizs) return "Retreiving Quizs..."
   return (
     <div className="flex flex-wrap m-3">
         {loading ? "Retreiving Quizs..."

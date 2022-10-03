@@ -3,6 +3,21 @@ import bcrypt from 'bcryptjs'
 import UserModel from '../Models/User.js'
 
 
+// Get User
+
+export const getUser = async (req, res) => {
+
+    try {
+        const user = await UserModel.findById(req.params.id)
+        res.status(200).json(user)
+        
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
+
+
 //update user
 
 export const updateUser = async (req, res) => {

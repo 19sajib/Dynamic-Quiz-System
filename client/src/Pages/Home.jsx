@@ -1,4 +1,3 @@
-
 import Quizs from '../Components/Quizs'
 
 const Home = () => {

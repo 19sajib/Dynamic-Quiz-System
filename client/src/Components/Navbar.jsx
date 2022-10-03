@@ -40,9 +40,9 @@ const Navbar = () => {
             onClick={()=>{setOpen(prev=>!prev)}}
           >
             <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
               d="M4 6h16M4 12h16M4 18h16"
             />
           </svg>
@@ -61,11 +61,11 @@ const Navbar = () => {
                 >Features</a
               >
             </li>
-            <li>
-              <a className="md:p-4 py-2 block hover:text-purple-400" href="#"
-                >Pricing</a
-              >
-            </li>
+            {user && <li>
+              <a className="md:p-4 py-2 block hover:text-purple-400" href={`/user/${user._id}`}
+                >{user.username}
+              </ a>
+            </li>}
             <li>
             {!user ? <a
                 className="md:p-4 py-2 block hover:text-purple-400 text-purple-500"
@@ -95,11 +95,11 @@ const Navbar = () => {
                 >Features</a
               >
             </li>
-            <li>
-              <a className="md:p-4 py-2 block hover:text-purple-400" href="#"
-                >Pricing</a
+            {user && <li>
+              <a className="md:p-4 py-2 block hover:text-purple-400" href={`/user/${user._id}`}
+                >{user.username}</a
               >
-            </li>
+            </li>}
             <li>
               {!user ? <a
                 className="md:p-4 py-2 block hover:text-purple-400 text-purple-500"
@@ -109,7 +109,7 @@ const Navbar = () => {
               <a
                 className="md:p-4 py-2 block hover:text-purple-400 text-purple-500"
                 href="/"
-                onClick={()=> dispatch(logOut)}
+                onClick={()=> dispatch(logOut())}
                 >Log Out</a
               >}
             </li>

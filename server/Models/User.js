@@ -31,6 +31,9 @@ const UserSchema = mongoose.Schema({
     totalRefund: {
         type: Number,
         default: 0
+    },
+    image: {
+        type: String,
     }
 
 }, 

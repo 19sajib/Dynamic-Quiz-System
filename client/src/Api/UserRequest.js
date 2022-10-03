@@ -9,5 +9,5 @@ API.interceptors.request.use((req) => {
     return req;
   });
 
-export const getAllQuiz = (id) => API.get(`/quiz/all`)
-export const submitQuiz = (id, quizData) => API.put(`/quiz/submit/${id}`, quizData)
+export const getUser = (id) => API.get(`/user/${id}`);
+
