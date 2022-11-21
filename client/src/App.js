@@ -1,13 +1,15 @@
+import { useSelector }from 'react-redux'
+import { Routes, Route, Navigate } from 'react-router-dom'
+
 import './App.css';
 import Auth from './Pages/Auth'
 import Home from './Pages/Home'
 import Quiz from './Pages/Quiz'
-import QuizSummary from './Pages/QuizSummary';
-import Navbar from './Components/Navbar';
-
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { useSelector }from 'react-redux'
 import User from './Pages/User';
+import Navbar from './Components/Navbar';
+import CreateQuiz from './Pages/CreateQuiz';
+import QuizSummary from './Pages/QuizSummary';
+
 
 
 function App() {
@@ -46,6 +48,11 @@ function App() {
          <Route
                 path="/quiz/:id/summary"    
                 element={ user ? <QuizSummary /> : <Navigate to = "../auth" /> } 
+          /> 
+
+         <Route
+                path="/create"    
+                element={ user ? <CreateQuiz /> : <Navigate to = "../auth" /> } 
           /> 
 
       </Routes>
